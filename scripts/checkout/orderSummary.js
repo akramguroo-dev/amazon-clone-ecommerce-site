@@ -1,6 +1,6 @@
 import {
   cart, removeFromCart, calculateCartQuantity, 
-  updateQuantity, updateDeliveryOptionId
+  updateQuantity, updateDeliveryOption
 } from '../../data/cart.js';
 import {products, getProduct} from '../../data/products.js';
 import formatCurrency from '../utils/money.js';
@@ -167,7 +167,7 @@ export function renderOrderSummary() {
     element.addEventListener('click', () => {
       const productId = element.dataset.productId;
       const deliveryOptionId = element.dataset.deliveryOptionId;
-      updateDeliveryOptionId(productId, deliveryOptionId);
+      updateDeliveryOption(productId, deliveryOptionId);
       renderOrderSummary(); // Recursion
       renderPaymentSummary();
     });
