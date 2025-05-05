@@ -3,15 +3,15 @@ import { validDeliveryOption } from "./deliveryOptions.js";
 
 class Cart {
   cartItem;
-  localStorageKey;
+  #localStorageKey;
 
   constructor(localStorageKey) {
-    this.localStorageKey = localStorageKey;
-    this.loadFromStorage();
+    this.#localStorageKey = localStorageKey;
+    this.#loadFromStorage();
   }
 
-  loadFromStorage() {
-    this.cartItem = JSON.parse(localStorage.getItem(this.localStorageKey));
+  #loadFromStorage() {
+    this.cartItem = JSON.parse(localStorage.getItem(this.#localStorageKey));
   
     if (!this.cartItem) {
       this.cartItem = [{
@@ -27,7 +27,7 @@ class Cart {
   }
 
   saveToStorage() {
-    localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItem));
+    localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItem));
   }
 
   updateQuantity(productId, newQuantity) {
