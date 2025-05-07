@@ -1,7 +1,4 @@
-import {
-  cart, removeFromCart, calculateCartQuantity, 
-  updateQuantity, updateDeliveryOption
-} from '../../data/cart.js';
+import { cart } from '../../data/cart-class.js';
 import {products, getProduct} from '../../data/products.js';
 import formatCurrency from '../utils/money.js';
 import {
@@ -15,7 +12,7 @@ import {renderCheckoutHeader} from './checkoutHeader.js';
 export function renderOrderSummary() {
   let cartSummaryHTML = '';
 
-  cart.forEach((cartItem) => {
+  cart.cartItem.forEach((cartItem) => {
     const productId = cartItem.productId;
 
     const matchingProduct = getProduct(productId);
@@ -81,7 +78,7 @@ export function renderOrderSummary() {
     document.querySelectorAll('.js-delete-quantity-link').forEach((link) => {
       link.addEventListener('click', () => {
         const productId = link.dataset.productId;
-        removeFromCart(productId);
+        cart.removeFromCart(productId);
 
         const container = document.querySelector(`.js-cart-item-container-${productId}`);
         container.remove();
@@ -115,7 +112,7 @@ export function renderOrderSummary() {
         alert('Quantity must be atleast 0 and less than 1000');
         return;
       }
-      updateQuantity(productId, newQuantity);
+      cart.updateQuantity(productId, newQuantity);
 
       const container = document.querySelector(`.js-cart-item-container-${productId}`);
       container.classList.remove('is-editing-quantity');
@@ -167,7 +164,7 @@ export function renderOrderSummary() {
     element.addEventListener('click', () => {
       const productId = element.dataset.productId;
       const deliveryOptionId = element.dataset.deliveryOptionId;
-      updateDeliveryOption(productId, deliveryOptionId);
+      cart.updateDeliveryOption(productId, deliveryOptionId);
       renderOrderSummary(); // Recursion
       renderPaymentSummary();
     });
