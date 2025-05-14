@@ -82,7 +82,7 @@ document.querySelector('.js-orders-grid').innerHTML = ordersHTML;
 
 document.querySelectorAll('.js-buy-again').forEach((button) => {
   button.addEventListener('click', () => {
-    cart.addToCart(button.dataset.productId);
+    cart.buyAgain(button.dataset.productId);
 
     // (Optional) display a message that the product was added,
     // then change it back after a second.

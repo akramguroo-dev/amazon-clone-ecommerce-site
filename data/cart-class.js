@@ -125,6 +125,28 @@ class Cart {
     this.cartItem = [];
     this.saveToStorage();
   }
+
+  buyAgain(productId) {
+    let matchingItem;
+
+    this.cartItem.forEach((cartItem) => {
+      if (productId === cartItem.productId) {
+        matchingItem = cartItem;
+      }
+    });
+      
+    if (matchingItem) {
+        matchingItem.quantity++;
+    } else {
+      this.cartItem.push({
+        productId,
+        quantity: 1,
+        deliveryOptionId: '1'
+      });
+    }
+
+    this.saveToStorage();
+  }
 }
 
 export const cart = new Cart('cart');
