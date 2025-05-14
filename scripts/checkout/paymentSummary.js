@@ -93,6 +93,8 @@ export function renderPaymentSummary() {
       console.log('Unexpected error. Try again later.');
     }
 
+    /* Extra feature: Make the cart empty after creating an order. */
+    cart.resetCart();
     window.location.href = 'orders.html';
   });
 }

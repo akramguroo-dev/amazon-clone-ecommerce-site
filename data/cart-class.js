@@ -61,13 +61,16 @@ class Cart {
         matchingItem = cartItem;
       }
     });
+
+    const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
+      const quantity = Number(quantitySelector.value);
       
     if (matchingItem) {
-        matchingItem.quantity++;
+        matchingItem.quantity += quantity;
     } else {
       this.cartItem.push({
-        productId: productId,
-        quantity: 1,
+        productId,
+        quantity,
         deliveryOptionId: '1'
       });
     }
@@ -107,6 +110,11 @@ class Cart {
 
     matchingItem.deliveryOptionId = deliveryOptionId;
 
+    this.saveToStorage();
+  }
+
+  resetCart() {
+    this.cartItem = [];
     this.saveToStorage();
   }
 }
