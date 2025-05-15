@@ -147,6 +147,13 @@ class Cart {
 
     this.saveToStorage();
   }
+
+  updateCartQuantity() {
+    const cartQuantity = this.calculateCartQuantity();
+
+    document.querySelector('.js-cart-quantity').
+    innerHTML = cartQuantity;
+  } 
 }
 
 export const cart = new Cart('cart');

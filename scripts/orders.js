@@ -83,6 +83,7 @@ document.querySelector('.js-orders-grid').innerHTML = ordersHTML;
 document.querySelectorAll('.js-buy-again').forEach((button) => {
   button.addEventListener('click', () => {
     cart.buyAgain(button.dataset.productId);
+    cart.updateCartQuantity();
 
     // (Optional) display a message that the product was added,
     // then change it back after a second.
@@ -95,6 +96,8 @@ document.querySelectorAll('.js-buy-again').forEach((button) => {
     }, 1000);
   });
 });
+
+cart.updateCartQuantity();
 }
 
 loadPage();
