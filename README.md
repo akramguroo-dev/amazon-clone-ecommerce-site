@@ -19,8 +19,6 @@ All pages are interactive and simulate core Amazon-like functionality.
 
 🔗 [View Project on GitHub Pages](https://akramguroo-dev.github.io/amazon-clone-ecommerce-site/)
 
-> Replace `your-username` with your actual GitHub username.
-
 ---
 
 ## 🎯 Features
